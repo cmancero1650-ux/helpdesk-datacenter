@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tickets registrados | Help Desk Datacenter</title>
+</head>
+<body>
+  <header>
+    <p><strong>Help Desk Datacenter</strong></p>
+    <h1>Tickets registrados</h1>
+  </header>
+
+  <nav aria-label="Menu principal">
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="reportar.html">Reportar incidente</a></li>
+      <li><a href="tickets.html" aria-current="page">Tickets registrados</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section aria-labelledby="listado-tickets">
+      <h2 id="listado-tickets">Listado organizado de tickets</h2>
+      <p>La siguiente tabla presenta incidentes de ejemplo para el prototipo.</p>
+
+      <table>
+        <caption>Tickets de soporte registrados</caption>
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Titulo</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Prioridad</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Fecha</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>HD-001</td>
+            <td>Intermitencia en la red interna</td>
+            <td>Red</td>
+            <td>Alta</td>
+            <td>Abierto</td>
+            <td><time datetime="2026-05-18">18/05/2026</time></td>
+          </tr>
+          <tr>
+            <td>HD-002</td>
+            <td>Equipo de monitoreo no enciende</td>
+            <td>Hardware</td>
+            <td>Media</td>
+            <td>En proceso</td>
+            <td><time datetime="2026-05-20">20/05/2026</time></td>
+          </tr>
+          <tr>
+            <td>HD-003</td>
+            <td>Error al iniciar aplicacion de soporte</td>
+            <td>Software</td>
+            <td>Baja</td>
+            <td>Cerrado</td>
+            <td><time datetime="2026-05-22">22/05/2026</time></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section aria-labelledby="estado-tickets">
+      <h2 id="estado-tickets">Estados disponibles</h2>
+
+      <article>
+        <h3>Abierto</h3>
+        <p>El ticket fue registrado y espera revision del area de soporte.</p>
+      </article>
+
+      <article>
+        <h3>En proceso</h3>
+        <p>El ticket esta siendo atendido por personal tecnico.</p>
+      </article>
+
+      <article>
+        <h3>Cerrado</h3>
+        <p>El incidente fue solucionado y el ticket finalizo su ciclo.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>Help Desk Datacenter - Listado estructurado en HTML5.</p>
+  </footer>
+</body>
+</html>

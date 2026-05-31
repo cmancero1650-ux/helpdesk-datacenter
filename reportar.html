@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reportar incidente | Help Desk Datacenter</title>
+</head>
+<body>
+  <header>
+    <p><strong>Help Desk Datacenter</strong></p>
+    <h1>Reportar incidente</h1>
+  </header>
+
+  <nav aria-label="Menu principal">
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="reportar.html" aria-current="page">Reportar incidente</a></li>
+      <li><a href="tickets.html">Tickets registrados</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section aria-labelledby="formulario-incidente">
+      <h2 id="formulario-incidente">Formulario de ingreso de incidentes</h2>
+      <p>Complete la informacion solicitada para registrar un nuevo ticket.</p>
+
+      <form action="#" method="post">
+        <p>
+          <label for="titulo">Titulo del incidente</label>
+          <input type="text" id="titulo" name="titulo" required>
+        </p>
+
+        <p>
+          <label for="categoria">Categoria</label>
+          <select id="categoria" name="categoria" required>
+            <option value="">Seleccione una categoria</option>
+            <option value="red">Red</option>
+            <option value="hardware">Hardware</option>
+            <option value="software">Software</option>
+          </select>
+        </p>
+
+        <fieldset>
+          <legend>Nivel de prioridad</legend>
+
+          <p>
+            <input type="radio" id="prioridad-alta" name="prioridad" value="alta" required>
+            <label for="prioridad-alta">Alta</label>
+          </p>
+
+          <p>
+            <input type="radio" id="prioridad-media" name="prioridad" value="media">
+            <label for="prioridad-media">Media</label>
+          </p>
+
+          <p>
+            <input type="radio" id="prioridad-baja" name="prioridad" value="baja">
+            <label for="prioridad-baja">Baja</label>
+          </p>
+        </fieldset>
+
+        <p>
+          <label for="descripcion">Descripcion detallada</label>
+          <textarea id="descripcion" name="descripcion" rows="6" required></textarea>
+        </p>
+
+        <p>
+          <button type="submit">Registrar incidente</button>
+          <button type="reset">Limpiar formulario</button>
+        </p>
+      </form>
+    </section>
+
+    <section aria-labelledby="orientacion">
+      <h2 id="orientacion">Datos recomendados</h2>
+      <article>
+        <h3>Detalle del reporte</h3>
+        <p>
+          Incluya el equipo afectado, area responsable, hora aproximada del
+          incidente y cualquier mensaje de error observado.
+        </p>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>Contacto de soporte: soporte@datacenter.local</p>
+  </footer>
+</body>
+</html>
