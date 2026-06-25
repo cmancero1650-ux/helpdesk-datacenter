@@ -3,63 +3,222 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard | Help Desk Datacenter</title>
+  <meta
+    name="description"
+    content="Libreria de componentes visuales del sistema Help Desk Datacenter."
+  >
+  <title>UI Kit | Help Desk Datacenter</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <p><strong>Help Desk Datacenter</strong></p>
-    <h1>Dashboard principal</h1>
+  <header class="site-header">
+    <div class="container header-content">
+      <div>
+        <p class="eyebrow">Help Desk Datacenter</p>
+        <h1>Design System</h1>
+        <p class="header-description">
+          Componentes reutilizables para la gestion de incidentes.
+        </p>
+      </div>
+      <a class="back-link" href="dashboard.html">Ver dashboard</a>
+    </div>
   </header>
 
-  <nav aria-label="Menu principal">
-    <ul>
-      <li><a href="index.html" aria-current="page">Inicio</a></li>
-      <li><a href="reportar.html">Reportar incidente</a></li>
-      <li><a href="tickets.html">Tickets registrados</a></li>
-    </ul>
+  <nav class="component-nav" aria-label="Componentes del Design System">
+    <div class="container">
+      <ul>
+        <li><a href="#colores">Colores</a></li>
+        <li><a href="#botones">Botones</a></li>
+        <li><a href="#formularios">Formularios</a></li>
+        <li><a href="#tarjetas">Tarjetas</a></li>
+        <li><a href="#alertas">Alertas</a></li>
+      </ul>
+    </div>
   </nav>
 
-  <main>
-    <section aria-labelledby="bienvenida">
-      <h2 id="bienvenida">Bienvenido al sistema Help Desk</h2>
-      <p>
-        Este prototipo permite organizar la gestion basica de incidentes de un
-        centro de datos mediante paginas HTML5 interconectadas.
-      </p>
+  <main class="container">
+    <section class="component-section" id="colores" aria-labelledby="titulo-colores">
+      <div class="section-heading">
+        <p class="eyebrow">Fundamentos</p>
+        <h2 id="titulo-colores">Paleta corporativa</h2>
+      </div>
+
+      <div class="color-grid">
+        <div class="color-swatch color-swatch--primary">
+          <strong>Primario</strong>
+          <span>#155EEF</span>
+        </div>
+        <div class="color-swatch color-swatch--secondary">
+          <strong>Secundario</strong>
+          <span>#344054</span>
+        </div>
+        <div class="color-swatch color-swatch--success">
+          <strong>Exito</strong>
+          <span>#067647</span>
+        </div>
+        <div class="color-swatch color-swatch--warning">
+          <strong>Advertencia</strong>
+          <span>#B54708</span>
+        </div>
+        <div class="color-swatch color-swatch--danger">
+          <strong>Peligro</strong>
+          <span>#B42318</span>
+        </div>
+      </div>
     </section>
 
-    <section aria-labelledby="resumen-sistema">
-      <h2 id="resumen-sistema">Resumen del sistema</h2>
+    <section class="component-section" id="botones" aria-labelledby="titulo-botones">
+      <div class="section-heading">
+        <p class="eyebrow">Acciones</p>
+        <h2 id="titulo-botones">Botones</h2>
+      </div>
 
-      <article>
-        <h3>Registro de incidentes</h3>
-        <p>
-          Los usuarios pueden reportar fallas relacionadas con red, hardware o
-          software desde el formulario de ingreso.
-        </p>
-      </article>
+      <div class="component-panel">
+        <div class="button-group" role="group" aria-label="Variantes de botones">
+          <button class="btn btn--primary" type="button">Guardar ticket</button>
+          <button class="btn btn--secondary" type="button">Cancelar</button>
+          <button class="btn btn--danger" type="button">Eliminar ticket</button>
+          <button class="btn btn--primary" type="button" disabled>No disponible</button>
+        </div>
+      </div>
+    </section>
 
-      <article>
-        <h3>Seguimiento de tickets</h3>
-        <p>
-          El personal de soporte puede revisar los tickets registrados y
-          consultar su prioridad, categoria y estado.
+    <section class="component-section" id="formularios" aria-labelledby="titulo-formularios">
+      <div class="section-heading">
+        <p class="eyebrow">Captura de datos</p>
+        <h2 id="titulo-formularios">Formularios</h2>
+      </div>
+
+      <div class="component-panel">
+        <form class="form-demo" action="#" method="post">
+          <div class="form-group">
+            <label for="titulo-ticket">Titulo del incidente</label>
+            <input
+              class="form-control"
+              type="text"
+              id="titulo-ticket"
+              name="titulo"
+              placeholder="Ej. Servidor sin conexion"
+              required
+            >
+            <small class="form-help">Use un titulo breve y descriptivo.</small>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="categoria-ticket">Categoria</label>
+              <select class="form-control" id="categoria-ticket" name="categoria" required>
+                <option value="">Seleccione una opcion</option>
+                <option value="red">Red</option>
+                <option value="hardware">Hardware</option>
+                <option value="software">Software</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="responsable-ticket">Responsable</label>
+              <input
+                class="form-control"
+                type="text"
+                id="responsable-ticket"
+                name="responsable"
+                value="Mesa de ayuda"
+              >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="descripcion-ticket">Descripcion</label>
+            <textarea
+              class="form-control"
+              id="descripcion-ticket"
+              name="descripcion"
+              rows="4"
+              placeholder="Describa el incidente y el equipo afectado"
+            ></textarea>
+          </div>
+
+          <button class="btn btn--primary" type="submit">Crear ticket</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="component-section" id="tarjetas" aria-labelledby="titulo-tarjetas">
+      <div class="section-heading">
+        <p class="eyebrow">Contenido</p>
+        <h2 id="titulo-tarjetas">Tarjeta de ticket</h2>
+      </div>
+
+      <article class="ticket-card">
+        <header class="ticket-card__header">
+          <div>
+            <p class="ticket-card__id">HD-024</p>
+            <h3>Intermitencia en la red principal</h3>
+          </div>
+          <span class="badge badge--high">Prioridad alta</span>
+        </header>
+
+        <p class="ticket-card__description">
+          Los equipos del segundo piso pierden conexion durante varios minutos.
         </p>
+
+        <dl class="ticket-card__meta">
+          <div>
+            <dt>Categoria</dt>
+            <dd>Red</dd>
+          </div>
+          <div>
+            <dt>Estado</dt>
+            <dd>En proceso</dd>
+          </div>
+          <div>
+            <dt>Responsable</dt>
+            <dd>Soporte de infraestructura</dd>
+          </div>
+        </dl>
+
+        <footer class="ticket-card__footer">
+          <time datetime="2026-06-24">24/06/2026</time>
+          <button class="btn btn--secondary btn--small" type="button">Ver detalle</button>
+        </footer>
       </article>
     </section>
 
-    <section aria-labelledby="indicadores">
-      <h2 id="indicadores">Indicadores generales</h2>
-      <ul>
-        <li>Tickets abiertos: 3</li>
-        <li>Tickets en proceso: 2</li>
-        <li>Tickets cerrados: 1</li>
-      </ul>
+    <section class="component-section" id="alertas" aria-labelledby="titulo-alertas">
+      <div class="section-heading">
+        <p class="eyebrow">Estados</p>
+        <h2 id="titulo-alertas">Alertas y badges</h2>
+      </div>
+
+      <div class="component-panel">
+        <div class="badge-group" role="group" aria-label="Niveles de prioridad">
+          <span class="badge badge--high">Alta</span>
+          <span class="badge badge--medium">Media</span>
+          <span class="badge badge--low">Baja</span>
+        </div>
+
+        <div class="alert-stack">
+          <div class="alert alert--success" role="status">
+            <strong>Ticket registrado.</strong>
+            <span>El incidente fue enviado correctamente.</span>
+          </div>
+          <div class="alert alert--warning" role="alert">
+            <strong>Informacion incompleta.</strong>
+            <span>Revise la categoria antes de continuar.</span>
+          </div>
+          <div class="alert alert--danger" role="alert">
+            <strong>No se pudo guardar.</strong>
+            <span>Intente nuevamente o contacte al administrador.</span>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer>
-    <p>Help Desk Datacenter - Actividad academica HTML5.</p>
+  <footer class="site-footer">
+    <div class="container">
+      <p>Help Desk Datacenter - Libreria UI con CSS3 puro.</p>
+    </div>
   </footer>
 </body>
 </html>
