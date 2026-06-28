@@ -34,3 +34,22 @@ Ejemplo de boton primario:
 ```html
 <button class="btn btn--primary" type="button">Guardar ticket</button>
 ```
+
+## Responsive Web Design
+
+Las paginas `dashboard.html`, `reportar.html` y `tickets.html` integran el
+UI Kit mediante `style.css` y usan Flexbox, CSS Grid y media queries.
+
+Puntos aplicados:
+
+- Navegacion flexible con adaptacion vertical en pantallas menores a `768px`.
+- Dashboard organizado con CSS Grid.
+- Formulario responsive con campos al `100%` en movil.
+- Tabla de tickets convertida en tarjetas para evitar scroll horizontal.
+- Etiqueta `<meta name="viewport">` incluida en todas las paginas.
+
+Validaciones recomendadas para el informe:
+
+- W3C Markup Validation Service para los archivos HTML.
+- W3C CSS Validation Service para `style.css`.
+- Capturas en escritorio, tablet y movil usando DevTools del navegador.
