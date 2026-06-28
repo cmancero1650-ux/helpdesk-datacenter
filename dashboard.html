@@ -3,35 +3,76 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="description"
+    content="Dashboard principal responsive del sistema Help Desk Datacenter."
+  >
   <title>Dashboard | Help Desk Datacenter</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <header>
-    <p><strong>Help Desk Datacenter</strong></p>
-    <h1>Dashboard principal</h1>
+<body class="app-body">
+  <header class="app-header">
+    <div class="container app-header__content">
+      <div>
+        <p class="eyebrow">Help Desk Datacenter</p>
+        <h1>Dashboard principal</h1>
+        <p class="header-description">
+          Vista general para monitorear tickets, prioridades y flujo de atencion.
+        </p>
+      </div>
+      <a class="btn btn--secondary" href="reportar.html">Reportar incidente</a>
+    </div>
   </header>
 
-  <nav aria-label="Menu principal">
-    <ul>
-      <li><a href="dashboard.html" aria-current="page">Inicio</a></li>
-      <li><a href="reportar.html">Reportar incidente</a></li>
-      <li><a href="tickets.html">Tickets registrados</a></li>
-    </ul>
+  <nav class="app-nav" aria-label="Menu principal">
+    <div class="container">
+      <ul>
+        <li><a href="dashboard.html" aria-current="page">Inicio</a></li>
+        <li><a href="reportar.html">Reportar incidente</a></li>
+        <li><a href="tickets.html">Tickets registrados</a></li>
+        <li><a href="index.html">UI Kit</a></li>
+      </ul>
+    </div>
   </nav>
 
-  <main>
-    <section aria-labelledby="bienvenida">
-      <h2 id="bienvenida">Bienvenido al sistema Help Desk</h2>
-      <p>
-        Este prototipo permite organizar la gestion basica de incidentes de un
-        centro de datos mediante paginas HTML5 interconectadas.
-      </p>
+  <main class="container app-main">
+    <section class="dashboard-grid" aria-labelledby="vista-general">
+      <h2 class="sr-only" id="vista-general">Vista general del dashboard</h2>
+      <article class="ticket-card dashboard-card dashboard-card--wide">
+        <p class="eyebrow">Resumen</p>
+        <h3>Bienvenido al sistema Help Desk</h3>
+        <p class="ticket-card__description">
+          Este prototipo permite organizar la gestion basica de incidentes de un
+          centro de datos mediante paginas HTML5 interconectadas y adaptables.
+        </p>
+        <div class="button-group">
+          <a class="btn btn--primary" href="reportar.html">Crear ticket</a>
+          <a class="btn btn--secondary" href="tickets.html">Ver tickets</a>
+        </div>
+      </article>
+
+      <article class="ticket-card dashboard-card">
+        <p class="ticket-card__id">Tickets abiertos</p>
+        <h3>3</h3>
+        <p class="ticket-card__description">Incidentes pendientes de revision inicial.</p>
+        <span class="badge badge--high">Alta atencion</span>
+      </article>
+
+      <article class="ticket-card dashboard-card">
+        <p class="ticket-card__id">En proceso</p>
+        <h3>2</h3>
+        <p class="ticket-card__description">Casos asignados al personal tecnico.</p>
+        <span class="badge badge--medium">Seguimiento</span>
+      </article>
     </section>
 
-    <section aria-labelledby="resumen-sistema">
-      <h2 id="resumen-sistema">Resumen del sistema</h2>
+    <section class="content-grid" aria-labelledby="resumen-sistema">
+      <div class="section-heading">
+        <p class="eyebrow">Operacion</p>
+        <h2 id="resumen-sistema">Resumen del sistema</h2>
+      </div>
 
-      <article>
+      <article class="component-panel">
         <h3>Registro de incidentes</h3>
         <p>
           Los usuarios pueden reportar fallas relacionadas con red, hardware o
@@ -39,7 +80,7 @@
         </p>
       </article>
 
-      <article>
+      <article class="component-panel">
         <h3>Seguimiento de tickets</h3>
         <p>
           El personal de soporte puede revisar los tickets registrados y
@@ -48,18 +89,23 @@
       </article>
     </section>
 
-    <section aria-labelledby="indicadores">
-      <h2 id="indicadores">Indicadores generales</h2>
-      <ul>
-        <li>Tickets abiertos: 3</li>
-        <li>Tickets en proceso: 2</li>
-        <li>Tickets cerrados: 1</li>
+    <section class="component-panel" aria-labelledby="indicadores">
+      <div class="section-heading">
+        <p class="eyebrow">Indicadores</p>
+        <h2 id="indicadores">Indicadores generales</h2>
+      </div>
+      <ul class="status-list">
+        <li><span class="badge badge--high">Abiertos</span><strong>3 tickets</strong></li>
+        <li><span class="badge badge--medium">En proceso</span><strong>2 tickets</strong></li>
+        <li><span class="badge badge--low">Cerrados</span><strong>1 ticket</strong></li>
       </ul>
     </section>
   </main>
 
-  <footer>
-    <p>Help Desk Datacenter - Actividad academica HTML5.</p>
+  <footer class="site-footer">
+    <div class="container">
+      <p>Help Desk Datacenter - Actividad academica Responsive Web Design.</p>
+    </div>
   </footer>
 </body>
 </html>

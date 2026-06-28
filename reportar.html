@@ -3,88 +3,134 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="description"
+    content="Formulario responsive para reportar incidentes del sistema Help Desk Datacenter."
+  >
   <title>Reportar incidente | Help Desk Datacenter</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <header>
-    <p><strong>Help Desk Datacenter</strong></p>
-    <h1>Reportar incidente</h1>
+<body class="app-body">
+  <header class="app-header">
+    <div class="container app-header__content">
+      <div>
+        <p class="eyebrow">Help Desk Datacenter</p>
+        <h1>Reportar incidente</h1>
+        <p class="header-description">
+          Registre fallas de red, hardware o software con datos claros para soporte.
+        </p>
+      </div>
+      <a class="btn btn--secondary" href="tickets.html">Ver tickets</a>
+    </div>
   </header>
 
-  <nav aria-label="Menu principal">
-    <ul>
-      <li><a href="dashboard.html">Inicio</a></li>
-      <li><a href="reportar.html" aria-current="page">Reportar incidente</a></li>
-      <li><a href="tickets.html">Tickets registrados</a></li>
-    </ul>
+  <nav class="app-nav" aria-label="Menu principal">
+    <div class="container">
+      <ul>
+        <li><a href="dashboard.html">Inicio</a></li>
+        <li><a href="reportar.html" aria-current="page">Reportar incidente</a></li>
+        <li><a href="tickets.html">Tickets registrados</a></li>
+        <li><a href="index.html">UI Kit</a></li>
+      </ul>
+    </div>
   </nav>
 
-  <main>
-    <section aria-labelledby="formulario-incidente">
-      <h2 id="formulario-incidente">Formulario de ingreso de incidentes</h2>
-      <p>Complete la informacion solicitada para registrar un nuevo ticket.</p>
-
-      <form action="#" method="post">
+  <main class="container app-main">
+    <section class="page-layout" aria-labelledby="registro-incidente">
+      <h2 class="sr-only" id="registro-incidente">Registro de incidente</h2>
+      <article class="component-panel">
+        <div class="section-heading">
+          <p class="eyebrow">Nuevo ticket</p>
+          <h3 id="formulario-incidente">Formulario de ingreso de incidentes</h3>
+        </div>
         <p>
-          <label for="titulo">Titulo del incidente</label>
-          <input type="text" id="titulo" name="titulo" required>
+          Complete la informacion solicitada para registrar un nuevo ticket.
         </p>
 
-        <p>
-          <label for="categoria">Categoria</label>
-          <select id="categoria" name="categoria" required>
-            <option value="">Seleccione una categoria</option>
-            <option value="red">Red</option>
-            <option value="hardware">Hardware</option>
-            <option value="software">Software</option>
-          </select>
-        </p>
+        <form class="form-demo app-form" action="#" method="post">
+          <div class="form-group">
+            <label for="titulo">Titulo del incidente</label>
+            <input
+              class="form-control"
+              type="text"
+              id="titulo"
+              name="titulo"
+              placeholder="Ej. Servidor sin conexion"
+              required
+            >
+          </div>
 
-        <fieldset>
-          <legend>Nivel de prioridad</legend>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="categoria">Categoria</label>
+              <select class="form-control" id="categoria" name="categoria" required>
+                <option value="">Seleccione una categoria</option>
+                <option value="red">Red</option>
+                <option value="hardware">Hardware</option>
+                <option value="software">Software</option>
+              </select>
+            </div>
 
-          <p>
-            <input type="radio" id="prioridad-alta" name="prioridad" value="alta" required>
-            <label for="prioridad-alta">Alta</label>
-          </p>
+            <fieldset class="priority-group">
+              <legend>Nivel de prioridad</legend>
 
-          <p>
-            <input type="radio" id="prioridad-media" name="prioridad" value="media">
-            <label for="prioridad-media">Media</label>
-          </p>
+              <div class="radio-list">
+                <label>
+                  <input type="radio" name="prioridad" value="alta" required>
+                  <span class="badge badge--high">Alta</span>
+                </label>
 
-          <p>
-            <input type="radio" id="prioridad-baja" name="prioridad" value="baja">
-            <label for="prioridad-baja">Baja</label>
-          </p>
-        </fieldset>
+                <label>
+                  <input type="radio" name="prioridad" value="media">
+                  <span class="badge badge--medium">Media</span>
+                </label>
 
-        <p>
-          <label for="descripcion">Descripcion detallada</label>
-          <textarea id="descripcion" name="descripcion" rows="6" required></textarea>
-        </p>
+                <label>
+                  <input type="radio" name="prioridad" value="baja">
+                  <span class="badge badge--low">Baja</span>
+                </label>
+              </div>
+            </fieldset>
+          </div>
 
-        <p>
-          <button type="submit">Registrar incidente</button>
-          <button type="reset">Limpiar formulario</button>
-        </p>
-      </form>
-    </section>
+          <div class="form-group">
+            <label for="descripcion">Descripcion detallada</label>
+            <textarea
+              class="form-control"
+              id="descripcion"
+              name="descripcion"
+              rows="6"
+              placeholder="Incluya equipo afectado, area, hora aproximada y mensaje de error"
+              required
+            ></textarea>
+          </div>
 
-    <section aria-labelledby="orientacion">
-      <h2 id="orientacion">Datos recomendados</h2>
-      <article>
-        <h3>Detalle del reporte</h3>
-        <p>
+          <div class="button-group form-actions">
+            <button class="btn btn--primary" type="submit">Registrar incidente</button>
+            <button class="btn btn--secondary" type="reset">Limpiar formulario</button>
+          </div>
+        </form>
+      </article>
+
+      <aside class="ticket-card guidance-card" aria-labelledby="orientacion">
+        <p class="eyebrow">Recomendacion</p>
+        <h2 id="orientacion">Datos recomendados</h2>
+        <p class="ticket-card__description">
           Incluya el equipo afectado, area responsable, hora aproximada del
           incidente y cualquier mensaje de error observado.
         </p>
-      </article>
+        <div class="alert alert--warning" role="status">
+          <strong>Prioridad alta.</strong>
+          <span>Usela solo cuando el servicio este detenido o afecte a varios usuarios.</span>
+        </div>
+      </aside>
     </section>
   </main>
 
-  <footer>
-    <p>Contacto de soporte: soporte@datacenter.local</p>
+  <footer class="site-footer">
+    <div class="container">
+      <p>Contacto de soporte: soporte@datacenter.local</p>
+    </div>
   </footer>
 </body>
 </html>

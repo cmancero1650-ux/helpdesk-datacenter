@@ -3,90 +3,125 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="description"
+    content="Listado responsive de tickets registrados en el sistema Help Desk Datacenter."
+  >
   <title>Tickets registrados | Help Desk Datacenter</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <header>
-    <p><strong>Help Desk Datacenter</strong></p>
-    <h1>Tickets registrados</h1>
+<body class="app-body">
+  <header class="app-header">
+    <div class="container app-header__content">
+      <div>
+        <p class="eyebrow">Help Desk Datacenter</p>
+        <h1>Tickets registrados</h1>
+        <p class="header-description">
+          Consulte incidentes registrados, prioridad, categoria y estado actual.
+        </p>
+      </div>
+      <a class="btn btn--primary" href="reportar.html">Nuevo ticket</a>
+    </div>
   </header>
 
-  <nav aria-label="Menu principal">
-    <ul>
-      <li><a href="dashboard.html">Inicio</a></li>
-      <li><a href="reportar.html">Reportar incidente</a></li>
-      <li><a href="tickets.html" aria-current="page">Tickets registrados</a></li>
-    </ul>
+  <nav class="app-nav" aria-label="Menu principal">
+    <div class="container">
+      <ul>
+        <li><a href="dashboard.html">Inicio</a></li>
+        <li><a href="reportar.html">Reportar incidente</a></li>
+        <li><a href="tickets.html" aria-current="page">Tickets registrados</a></li>
+        <li><a href="index.html">UI Kit</a></li>
+      </ul>
+    </div>
   </nav>
 
-  <main>
-    <section aria-labelledby="listado-tickets">
-      <h2 id="listado-tickets">Listado organizado de tickets</h2>
+  <main class="container app-main">
+    <section class="component-panel" aria-labelledby="listado-tickets">
+      <div class="section-heading">
+        <p class="eyebrow">Seguimiento</p>
+        <h2 id="listado-tickets">Listado organizado de tickets</h2>
+      </div>
       <p>La siguiente tabla presenta incidentes de ejemplo para el prototipo.</p>
 
-      <table>
-        <caption>Tickets de soporte registrados</caption>
-        <thead>
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Titulo</th>
-            <th scope="col">Categoria</th>
-            <th scope="col">Prioridad</th>
-            <th scope="col">Estado</th>
-            <th scope="col">Fecha</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>HD-001</td>
-            <td>Intermitencia en la red interna</td>
-            <td>Red</td>
-            <td>Alta</td>
-            <td>Abierto</td>
-            <td><time datetime="2026-05-18">18/05/2026</time></td>
-          </tr>
-          <tr>
-            <td>HD-002</td>
-            <td>Equipo de monitoreo no enciende</td>
-            <td>Hardware</td>
-            <td>Media</td>
-            <td>En proceso</td>
-            <td><time datetime="2026-05-20">20/05/2026</time></td>
-          </tr>
-          <tr>
-            <td>HD-003</td>
-            <td>Error al iniciar aplicacion de soporte</td>
-            <td>Software</td>
-            <td>Baja</td>
-            <td>Cerrado</td>
-            <td><time datetime="2026-05-22">22/05/2026</time></td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-card">
+        <table class="ticket-table">
+          <caption>Tickets de soporte registrados</caption>
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Titulo</th>
+              <th scope="col">Categoria</th>
+              <th scope="col">Prioridad</th>
+              <th scope="col">Estado</th>
+              <th scope="col">Fecha</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-label="ID">HD-001</td>
+              <td data-label="Titulo">Intermitencia en la red interna</td>
+              <td data-label="Categoria">Red</td>
+              <td data-label="Prioridad"><span class="badge badge--high">Alta</span></td>
+              <td data-label="Estado">Abierto</td>
+              <td data-label="Fecha"><time datetime="2026-05-18">18/05/2026</time></td>
+            </tr>
+            <tr>
+              <td data-label="ID">HD-002</td>
+              <td data-label="Titulo">Equipo de monitoreo no enciende</td>
+              <td data-label="Categoria">Hardware</td>
+              <td data-label="Prioridad"><span class="badge badge--medium">Media</span></td>
+              <td data-label="Estado">En proceso</td>
+              <td data-label="Fecha"><time datetime="2026-05-20">20/05/2026</time></td>
+            </tr>
+            <tr>
+              <td data-label="ID">HD-003</td>
+              <td data-label="Titulo">Error al iniciar aplicacion de soporte</td>
+              <td data-label="Categoria">Software</td>
+              <td data-label="Prioridad"><span class="badge badge--low">Baja</span></td>
+              <td data-label="Estado">Cerrado</td>
+              <td data-label="Fecha"><time datetime="2026-05-22">22/05/2026</time></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </section>
 
-    <section aria-labelledby="estado-tickets">
-      <h2 id="estado-tickets">Estados disponibles</h2>
+    <section class="content-grid" aria-labelledby="estado-tickets">
+      <div class="section-heading">
+        <p class="eyebrow">Estados</p>
+        <h2 id="estado-tickets">Estados disponibles</h2>
+      </div>
 
-      <article>
+      <article class="ticket-card">
+        <p class="ticket-card__id">Estado</p>
         <h3>Abierto</h3>
-        <p>El ticket fue registrado y espera revision del area de soporte.</p>
+        <p class="ticket-card__description">
+          El ticket fue registrado y espera revision del area de soporte.
+        </p>
       </article>
 
-      <article>
+      <article class="ticket-card">
+        <p class="ticket-card__id">Estado</p>
         <h3>En proceso</h3>
-        <p>El ticket esta siendo atendido por personal tecnico.</p>
+        <p class="ticket-card__description">
+          El ticket esta siendo atendido por personal tecnico.
+        </p>
       </article>
 
-      <article>
+      <article class="ticket-card">
+        <p class="ticket-card__id">Estado</p>
         <h3>Cerrado</h3>
-        <p>El incidente fue solucionado y el ticket finalizo su ciclo.</p>
+        <p class="ticket-card__description">
+          El incidente fue solucionado y el ticket finalizo su ciclo.
+        </p>
       </article>
     </section>
   </main>
 
-  <footer>
-    <p>Help Desk Datacenter - Listado estructurado en HTML5.</p>
+  <footer class="site-footer">
+    <div class="container">
+      <p>Help Desk Datacenter - Listado estructurado y responsive.</p>
+    </div>
   </footer>
 </body>
 </html>
