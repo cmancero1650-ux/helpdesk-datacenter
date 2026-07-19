@@ -1,6 +1,24 @@
-# Guia de ejecucion local
+# Guia de ejecucion local con PostgreSQL
 
-## 1. Backend
+## 1. Requisitos
+
+- Node.js 20 o superior.
+- PostgreSQL instalado y en ejecucion.
+- Usuario local de PostgreSQL: `postgres`.
+- Contrasena local indicada para la actividad: `2026`.
+
+## 2. Crear la base de datos
+
+Si `psql.exe` no esta en el PATH, en Windows puede usar la ruta:
+
+```powershell
+$env:PGPASSWORD = "2026"
+& "C:\Program Files\PostgreSQL\18\bin\createdb.exe" -U postgres helpdesk_datacenter
+```
+
+Si ya existe la base, no es necesario crearla nuevamente.
+
+## 3. Configurar backend
 
 Entrar a la carpeta del backend:
 
@@ -14,31 +32,29 @@ Instalar dependencias:
 npm install
 ```
 
-Crear el archivo `.env` a partir de `.env.example`.
+Crear el archivo `.env` desde `.env.example`:
 
-Para trabajar sin MongoDB instalado, usar:
+```bash
+copy .env.example .env
+```
+
+Contenido recomendado:
 
 ```env
-USE_MEMORY_DB=true
+PORT=3000
+PGHOST=localhost
+PGPORT=5432
+PGDATABASE=helpdesk_datacenter
+PGUSER=postgres
+PGPASSWORD=2026
 JWT_SECRET=clave_segura_para_desarrollo
+JWT_EXPIRES_IN=2h
 CORS_ORIGIN=http://localhost:8080
 ```
 
-Ejecutar el servidor:
+## 4. Crear tablas y datos iniciales
 
-```bash
-npm run dev
-```
-
-La API queda disponible en:
-
-```text
-http://localhost:3000
-```
-
-## 2. Datos de prueba
-
-Si se usa una base MongoDB real, se pueden cargar datos iniciales con:
+El backend crea las tablas automaticamente al arrancar. Para cargar usuario y tickets de prueba:
 
 ```bash
 npm run seed
@@ -51,7 +67,25 @@ admin@helpdesk.local
 Admin123
 ```
 
-## 3. Frontend
+## 5. Ejecutar API
+
+```bash
+npm run dev
+```
+
+La API queda disponible en:
+
+```text
+http://localhost:3000
+```
+
+Prueba rapida:
+
+```text
+GET http://localhost:3000/health
+```
+
+## 6. Ejecutar frontend
 
 Servir la carpeta `frontend/` con cualquier servidor estatico. Ejemplo:
 
@@ -65,7 +99,7 @@ Abrir:
 http://localhost:8080
 ```
 
-## 4. Flujo de prueba recomendado
+## 7. Flujo de prueba recomendado
 
 1. Iniciar sesion.
 2. Listar tickets existentes.

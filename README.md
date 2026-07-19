@@ -12,8 +12,8 @@ Repositorio: https://github.com/cmancero1650-ux/helpdesk-datacenter
 - `reportar.html`: formulario para registrar incidentes.
 - `tickets.html`: listado de tickets.
 - `frontend/`: interfaz moderna y responsive conectada a la API REST.
-- `backend/`: API RESTful con Node.js, Express, MongoDB y autenticacion JWT.
-- `db/`: esquema documental y datos iniciales de tickets.
+- `backend/`: API RESTful con Node.js, Express, PostgreSQL y autenticacion JWT.
+- `db/`: esquema SQL y datos iniciales de tickets.
 - `docs/`: documentacion tecnica de endpoints y ejecucion local.
 
 ## Design System
@@ -68,7 +68,8 @@ Stack utilizado:
 
 - Node.js
 - Express
-- MongoDB con Mongoose
+- PostgreSQL 18
+- Driver `pg`
 - JWT para autenticacion
 - bcryptjs para contrasenas
 - Helmet y CORS para seguridad basica
@@ -91,14 +92,26 @@ Backend:
 cd backend
 npm install
 copy .env.example .env
+npm run seed
 npm run dev
 ```
 
-Si no tiene MongoDB instalado, en `backend/.env` puede usar:
+Configuracion esperada en `backend/.env`:
 
 ```env
-USE_MEMORY_DB=true
+PGHOST=localhost
+PGPORT=5432
+PGDATABASE=helpdesk_datacenter
+PGUSER=postgres
+PGPASSWORD=2026
 JWT_SECRET=clave_segura_para_desarrollo
+CORS_ORIGIN=http://localhost:8080
+```
+
+Antes de ejecutar `npm run seed`, cree la base de datos PostgreSQL:
+
+```bash
+createdb -U postgres helpdesk_datacenter
 ```
 
 Frontend:
@@ -113,7 +126,7 @@ Abrir en el navegador:
 http://localhost:8080
 ```
 
-Usuario de prueba despues de ejecutar `npm run seed` con MongoDB real:
+Usuario de prueba despues de ejecutar `npm run seed`:
 
 ```text
 admin@helpdesk.local
