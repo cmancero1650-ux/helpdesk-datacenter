@@ -1,0 +1,23 @@
+[
+  {
+    "titulo": "Intermitencia en la red interna",
+    "descripcion": "Los usuarios reportan cortes de conectividad en el segundo piso.",
+    "categoria": "Red",
+    "prioridad": "Alta",
+    "estado": "Abierto"
+  },
+  {
+    "titulo": "Equipo de monitoreo no enciende",
+    "descripcion": "La estacion de monitoreo principal no responde al boton de encendido.",
+    "categoria": "Hardware",
+    "prioridad": "Media",
+    "estado": "En Progreso"
+  },
+  {
+    "titulo": "Error al iniciar aplicacion de soporte",
+    "descripcion": "La aplicacion muestra un mensaje de error al iniciar sesion.",
+    "categoria": "Software",
+    "prioridad": "Baja",
+    "estado": "Cerrado"
+  }
+]
