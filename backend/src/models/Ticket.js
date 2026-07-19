@@ -1,51 +1,37 @@
-import mongoose from "mongoose";
+export const CATEGORIAS = ["Red", "Hardware", "Software"];
+export const PRIORIDADES = ["Alta", "Media", "Baja"];
+export const ESTADOS = ["Abierto", "En Progreso", "Cerrado"];
 
-const ticketSchema = new mongoose.Schema(
-  {
-    titulo: {
-      type: String,
-      required: [true, "El titulo es obligatorio"],
-      trim: true,
-      minlength: 3,
-      maxlength: 120
-    },
-    descripcion: {
-      type: String,
-      required: [true, "La descripcion es obligatoria"],
-      trim: true,
-      minlength: 10,
-      maxlength: 1200
-    },
-    categoria: {
-      type: String,
-      required: true,
-      enum: ["Red", "Hardware", "Software"]
-    },
-    prioridad: {
-      type: String,
-      required: true,
-      enum: ["Alta", "Media", "Baja"]
-    },
-    estado: {
-      type: String,
-      required: true,
-      enum: ["Abierto", "En Progreso", "Cerrado"],
-      default: "Abierto"
+export function validateTicketPayload(payload, { partial = false } = {}) {
+  const errors = [];
+
+  if (!partial || payload.titulo !== undefined) {
+    if (!payload.titulo || payload.titulo.trim().length < 3) {
+      errors.push("El titulo debe tener al menos 3 caracteres");
     }
-  },
-  {
-    timestamps: true,
-    versionKey: false
   }
-);
 
-ticketSchema.set("toJSON", {
-  virtuals: true,
-  transform: (_doc, ret) => {
-    ret.id = ret._id.toString();
-    delete ret._id;
-    return ret;
+  if (!partial || payload.descripcion !== undefined) {
+    if (!payload.descripcion || payload.descripcion.trim().length < 10) {
+      errors.push("La descripcion debe tener al menos 10 caracteres");
+    }
   }
-});
 
-export const Ticket = mongoose.model("Ticket", ticketSchema);
+  if (!partial || payload.categoria !== undefined) {
+    if (!CATEGORIAS.includes(payload.categoria)) {
+      errors.push("La categoria debe ser Red, Hardware o Software");
+    }
+  }
+
+  if (!partial || payload.prioridad !== undefined) {
+    if (!PRIORIDADES.includes(payload.prioridad)) {
+      errors.push("La prioridad debe ser Alta, Media o Baja");
+    }
+  }
+
+  if (payload.estado !== undefined && !ESTADOS.includes(payload.estado)) {
+    errors.push("El estado debe ser Abierto, En Progreso o Cerrado");
+  }
+
+  return errors;
+}

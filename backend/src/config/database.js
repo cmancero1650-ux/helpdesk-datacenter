@@ -1,30 +1,36 @@
-import mongoose from "mongoose";
-import { MongoMemoryServer } from "mongodb-memory-server";
+import { readFile } from "node:fs/promises";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import pg from "pg";
 
-let memoryServer;
+const { Pool } = pg;
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+export const pool = new Pool({
+  host: process.env.PGHOST || "localhost",
+  port: Number(process.env.PGPORT || 5432),
+  database: process.env.PGDATABASE || "helpdesk_datacenter",
+  user: process.env.PGUSER || "postgres",
+  password: String(process.env.PGPASSWORD || "2026")
+});
+
+export async function query(text, params = []) {
+  return pool.query(text, params);
+}
 
 export async function connectDatabase() {
-  const shouldUseMemoryDb = process.env.USE_MEMORY_DB === "true" || !process.env.MONGODB_URI;
+  await pool.query("SELECT 1");
+  console.log("Base de datos conectada: PostgreSQL");
+}
 
-  // Permite probar la API localmente aunque el equipo no tenga MongoDB instalado.
-  if (shouldUseMemoryDb) {
-    memoryServer = await MongoMemoryServer.create({
-      instance: {
-        dbName: "helpdesk_datacenter"
-      }
-    });
-  }
-
-  const uri = shouldUseMemoryDb ? memoryServer.getUri() : process.env.MONGODB_URI;
-
-  await mongoose.connect(uri);
-  console.log(`Base de datos conectada: ${shouldUseMemoryDb ? "MongoDB temporal" : "MongoDB"}`);
+export async function initializeDatabase() {
+  const schemaPath = path.resolve(__dirname, "../../../db/schema.sql");
+  const schema = await readFile(schemaPath, "utf8");
+  await pool.query(schema);
 }
 
 export async function disconnectDatabase() {
-  await mongoose.disconnect();
-
-  if (memoryServer) {
-    await memoryServer.stop();
-  }
+  await pool.end();
 }

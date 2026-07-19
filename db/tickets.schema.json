@@ -1,14 +1,15 @@
 {
   "database": "helpdesk_datacenter",
-  "collection": "tickets",
+  "engine": "PostgreSQL",
+  "table": "tickets",
   "attributes": {
-    "id": "Identificador unico generado por MongoDB",
-    "titulo": "Texto requerido entre 3 y 120 caracteres",
-    "descripcion": "Texto requerido entre 10 y 1200 caracteres",
-    "categoria": "Red | Hardware | Software",
-    "prioridad": "Alta | Media | Baja",
-    "estado": "Abierto | En Progreso | Cerrado",
-    "createdAt": "Fecha de creacion generada automaticamente",
-    "updatedAt": "Fecha de ultima actualizacion generada automaticamente"
+    "id": "SERIAL PRIMARY KEY",
+    "titulo": "VARCHAR(120) NOT NULL",
+    "descripcion": "TEXT NOT NULL",
+    "categoria": "VARCHAR(20) CHECK Red, Hardware, Software",
+    "prioridad": "VARCHAR(10) CHECK Alta, Media, Baja",
+    "estado": "VARCHAR(20) CHECK Abierto, En Progreso, Cerrado",
+    "created_at": "TIMESTAMP DEFAULT NOW()",
+    "updated_at": "TIMESTAMP DEFAULT NOW()"
   }
 }
