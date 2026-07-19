@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Frontend responsive para consumir la API REST del Help Desk.">
+  <title>Help Desk API | Gestión de Tickets</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <p class="eyebrow">Help Desk Datacenter</p>
+      <h1>Gestión de tickets</h1>
+      <p>Interfaz responsive conectada a la API REST del backend.</p>
+    </div>
+    <button class="btn btn-secondary" id="logoutBtn" type="button" hidden>Cerrar sesión</button>
+  </header>
+
+  <main class="app-shell">
+    <section class="panel" id="loginPanel" aria-labelledby="loginTitle">
+      <h2 id="loginTitle">Autenticación</h2>
+      <p>Ingrese con el usuario de prueba o registre una nueva cuenta.</p>
+
+      <form class="form-grid" id="loginForm">
+        <label>
+          Correo
+          <input type="email" id="email" value="admin@helpdesk.local" required>
+        </label>
+        <label>
+          Contraseña
+          <input type="password" id="password" value="Admin123" required>
+        </label>
+        <div class="actions">
+          <button class="btn btn-primary" type="submit">Iniciar sesión</button>
+          <button class="btn btn-secondary" id="registerBtn" type="button">Registrar usuario</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="dashboard" id="appPanel" hidden>
+      <article class="panel">
+        <h2>Nuevo ticket</h2>
+        <form class="form-grid" id="ticketForm">
+          <input type="hidden" id="ticketId">
+          <label>
+            Título
+            <input type="text" id="titulo" minlength="3" required>
+          </label>
+          <label>
+            Categoría
+            <select id="categoria" required>
+              <option value="Red">Red</option>
+              <option value="Hardware">Hardware</option>
+              <option value="Software">Software</option>
+            </select>
+          </label>
+          <label>
+            Prioridad
+            <select id="prioridad" required>
+              <option value="Alta">Alta</option>
+              <option value="Media">Media</option>
+              <option value="Baja">Baja</option>
+            </select>
+          </label>
+          <label>
+            Estado
+            <select id="estado" required>
+              <option value="Abierto">Abierto</option>
+              <option value="En Progreso">En Progreso</option>
+              <option value="Cerrado">Cerrado</option>
+            </select>
+          </label>
+          <label class="span-all">
+            Descripción
+            <textarea id="descripcion" rows="4" minlength="10" required></textarea>
+          </label>
+          <div class="actions span-all">
+            <button class="btn btn-primary" type="submit">Guardar ticket</button>
+            <button class="btn btn-secondary" id="clearFormBtn" type="button">Limpiar</button>
+          </div>
+        </form>
+      </article>
+
+      <article class="panel">
+        <div class="list-header">
+          <h2>Tickets registrados</h2>
+          <button class="btn btn-secondary" id="refreshBtn" type="button">Actualizar</button>
+        </div>
+        <div class="ticket-list" id="ticketList" aria-live="polite"></div>
+      </article>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>

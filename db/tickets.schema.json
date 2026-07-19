@@ -1,0 +1,14 @@
+{
+  "database": "helpdesk_datacenter",
+  "collection": "tickets",
+  "attributes": {
+    "id": "Identificador unico generado por MongoDB",
+    "titulo": "Texto requerido entre 3 y 120 caracteres",
+    "descripcion": "Texto requerido entre 10 y 1200 caracteres",
+    "categoria": "Red | Hardware | Software",
+    "prioridad": "Alta | Media | Baja",
+    "estado": "Abierto | En Progreso | Cerrado",
+    "createdAt": "Fecha de creacion generada automaticamente",
+    "updatedAt": "Fecha de ultima actualizacion generada automaticamente"
+  }
+}
