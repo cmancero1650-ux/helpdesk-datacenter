@@ -49,7 +49,7 @@ PGUSER=postgres
 PGPASSWORD=2026
 JWT_SECRET=clave_segura_para_desarrollo
 JWT_EXPIRES_IN=2h
-CORS_ORIGIN=http://localhost:8080
+CORS_ORIGIN=http://localhost:5173,http://localhost:8080
 ```
 
 ## 4. Crear tablas y datos iniciales
