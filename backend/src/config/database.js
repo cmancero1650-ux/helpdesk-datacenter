@@ -13,7 +13,8 @@ export const pool = new Pool({
   port: Number(process.env.PGPORT || 5432),
   database: process.env.PGDATABASE || "helpdesk_datacenter",
   user: process.env.PGUSER || "postgres",
-  password: String(process.env.PGPASSWORD || "2026")
+  password: String(process.env.PGPASSWORD || "2026"),
+  ssl: process.env.PGSSL === "true" ? { rejectUnauthorized: false } : undefined
 });
 
 export async function query(text, params = []) {
