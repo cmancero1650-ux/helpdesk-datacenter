@@ -5,3 +5,11 @@ backend/node_modules/
 backend/.env
 dist/
 coverage/
+
+# Local reports and deployment evidence
+Documentacion/Informe_*.html
+Documentacion/Informe_*.pdf
+Capturas/07-spa-*.png
+Capturas/08-spa-*.png
+Capturas/09-spa-*.png
+tmp/
