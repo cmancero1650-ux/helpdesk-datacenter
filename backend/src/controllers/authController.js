@@ -1,7 +1,7 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { query } from "../config/database.js";
-import { ROLES, toPublicUser } from "../models/User.js";
+import { toPublicUser } from "../models/User.js";
 
 function signToken(user) {
   return jwt.sign(
@@ -19,22 +19,18 @@ function signToken(user) {
 
 export async function register(req, res, next) {
   try {
-    const { nombre, email, password, rol = "soporte" } = req.body;
+    const { nombre, email, password } = req.body;
 
-    if (!nombre || nombre.trim().length < 3) {
+    if (typeof nombre !== "string" || nombre.trim().length < 3) {
       return res.status(400).json({ message: "El nombre debe tener al menos 3 caracteres" });
     }
 
-    if (!email) {
+    if (typeof email !== "string" || !/^\S+@\S+\.\S+$/.test(email.trim())) {
       return res.status(400).json({ message: "El correo es obligatorio" });
     }
 
-    if (!password || password.length < 6) {
+    if (typeof password !== "string" || password.length < 6) {
       return res.status(400).json({ message: "La contrasena debe tener al menos 6 caracteres" });
-    }
-
-    if (!ROLES.includes(rol)) {
-      return res.status(400).json({ message: "Rol no permitido" });
     }
 
     const passwordHash = await bcrypt.hash(password, 10);
@@ -42,7 +38,7 @@ export async function register(req, res, next) {
       `INSERT INTO users (nombre, email, password_hash, rol)
        VALUES ($1, LOWER($2), $3, $4)
        RETURNING id, nombre, email, rol, created_at, updated_at`,
-      [nombre.trim(), email.trim(), passwordHash, rol]
+      [nombre.trim(), email.trim(), passwordHash, "soporte"]
     );
 
     const user = toPublicUser(result.rows[0]);
@@ -61,6 +57,10 @@ export async function register(req, res, next) {
 export async function login(req, res, next) {
   try {
     const { email, password } = req.body;
+    if (typeof email !== "string" || typeof password !== "string" || !email.trim() || !password) {
+      return res.status(400).json({ message: "El correo y la contrasena son obligatorios" });
+    }
+
     const result = await query(
       "SELECT id, nombre, email, password_hash, rol, created_at, updated_at FROM users WHERE email = LOWER($1)",
       [email]

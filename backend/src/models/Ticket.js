@@ -6,13 +6,13 @@ export function validateTicketPayload(payload, { partial = false } = {}) {
   const errors = [];
 
   if (!partial || payload.titulo !== undefined) {
-    if (!payload.titulo || payload.titulo.trim().length < 3) {
+    if (typeof payload.titulo !== "string" || payload.titulo.trim().length < 3) {
       errors.push("El titulo debe tener al menos 3 caracteres");
     }
   }
 
   if (!partial || payload.descripcion !== undefined) {
-    if (!payload.descripcion || payload.descripcion.trim().length < 10) {
+    if (typeof payload.descripcion !== "string" || payload.descripcion.trim().length < 10) {
       errors.push("La descripcion debe tener al menos 10 caracteres");
     }
   }
