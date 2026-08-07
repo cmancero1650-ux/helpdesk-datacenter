@@ -44,6 +44,11 @@ VITE_API_URL=https://helpdesk-datacenter-7sv8.onrender.com
 
 El comando de construccion es `npm run build` dentro de `frontend-spa/`. Se publica la carpeta `frontend-spa/dist`.
 
+El proyecto `helpdesk-frontend` de Vercel esta conectado al repositorio de
+GitHub `cmancero1650-ux/helpdesk-datacenter` y usa `frontend-spa` como
+directorio raiz. Cada cambio de la rama del frontend genera un despliegue
+automatico para validar la version publicada.
+
 ## Verificacion final
 
 1. Abrir `https://helpdesk-frontend-ashy-rho.vercel.app`.
