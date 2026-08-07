@@ -38,7 +38,10 @@
       <p><strong>Repositorio:</strong> <a href="https://github.com/cmancero1650-ux/helpdesk-datacenter">github.com/cmancero1650-ux/helpdesk-datacenter</a></p>
       <p><strong>Rama de trabajo:</strong> feature/frontend-spa</p>
       <p><strong>Stack:</strong> React, Vite, Node.js, Express, PostgreSQL y JWT</p>
-      <p><strong>Fecha:</strong> 30 de julio de 2026</p>
+      <p><strong>Fecha:</strong> 6 de agosto de 2026</p>
+      <p><strong>Frontend publico:</strong> <a href="https://helpdesk-frontend-ashy-rho.vercel.app">helpdesk-frontend-ashy-rho.vercel.app</a></p>
+      <p><strong>Backend publico:</strong> <a href="https://helpdesk-datacenter-7sv8.onrender.com">helpdesk-datacenter-7sv8.onrender.com</a></p>
+      <p><strong>Base de datos:</strong> Neon PostgreSQL, proyecto aged-star-58712964</p>
     </div>
   </section>
 
@@ -55,7 +58,7 @@
     </ul>
     <h2>3. Integracion y seguridad</h2>
     <p>La aplicacion usa peticiones HTTP asincronas a <code>/auth/login</code> y a las rutas protegidas de <code>/tickets</code>. React escapa el contenido textual de los tickets antes de renderizarlo, evitando insertar variables como HTML ejecutable. El backend valida los campos, usa consultas parametrizadas, JWT, Helmet y CORS configurable.</p>
-    <div class="ok"><strong>Verificacion local:</strong> login, GET de tickets, POST de ticket, PUT de actualizacion y DELETE del registro de prueba fueron comprobados contra PostgreSQL.</div>
+    <div class="ok"><strong>Verificacion publica:</strong> login, GET de tickets, POST de ticket y DELETE del registro temporal fueron comprobados desde Vercel contra Render y Neon. La API devolvio tres tickets iniciales.</div>
   </section>
 
   <section class="page-break">
@@ -76,8 +79,8 @@
     <h3>Prueba local</h3>
     <p>Backend: entrar a <code>backend/</code>, ejecutar <code>npm install</code>, configurar <code>.env</code>, ejecutar <code>npm run seed</code> y levantar con <code>npm run dev</code>. Frontend: entrar a <code>frontend-spa/</code>, ejecutar <code>npm install</code> y <code>npm run dev</code>.</p>
     <h3>Produccion</h3>
-    <p>El frontend se prepara con <code>npm run build</code> y publica <code>dist/</code>. La URL de la API se define con <code>VITE_API_URL</code>. El backend requiere PostgreSQL remoto, variables de entorno seguras y un origen CORS correspondiente al dominio del frontend.</p>
-    <div class="note"><strong>Nota de alcance:</strong> las capturas y pruebas incluidas corresponden al entorno local verificado. Para cumplir el despliegue cloud de la actividad se deben crear las cuentas de hosting, obtener las URLs publicas y reemplazar las variables de entorno indicadas en <code>docs/DEPLOYMENT.md</code>.</div>
+    <p>El frontend se publico en Vercel con <code>VITE_API_URL=https://helpdesk-datacenter-7sv8.onrender.com</code>. El backend Node.js/Express se publico en Render y se conecto mediante SSL a PostgreSQL Neon. CORS quedo restringido al dominio publico de Vercel.</p>
+    <div class="note"><strong>URLs de produccion:</strong> frontend <code>https://helpdesk-frontend-ashy-rho.vercel.app</code>, backend <code>https://helpdesk-datacenter-7sv8.onrender.com</code> y proyecto Neon <code>aged-star-58712964</code>.</div>
     <h2>7. Conclusiones</h2>
     <p>La fase frontend queda implementada como SPA modular, responsive y conectada a la API REST existente. La separacion de componentes facilita mantenimiento y futuras ampliaciones, mientras que la configuracion por variables permite migrar de localhost a servicios cloud sin cambiar el codigo de negocio.</p>
   </section>

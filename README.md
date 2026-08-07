@@ -146,6 +146,12 @@ producción use `npm run build`; la carpeta resultante es `dist/`.
 La guía de publicación en PostgreSQL remoto, Render/Railway y Vercel/Netlify
 está en `docs/DEPLOYMENT.md`.
 
+URLs de produccion verificadas:
+
+- Frontend: https://helpdesk-frontend-ashy-rho.vercel.app
+- Backend: https://helpdesk-datacenter-7sv8.onrender.com
+- Neon: proyecto `aged-star-58712964`
+
 Usuario de prueba despues de ejecutar `npm run seed`:
 
 ```text
